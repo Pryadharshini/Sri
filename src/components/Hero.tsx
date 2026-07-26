@@ -90,17 +90,17 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10 pointer-events-none"></div>
         </motion.div>
 
-        <div className="relative z-20 w-full text-center px-4 flex flex-col items-center justify-center">
+        <div className="relative z-20 w-full text-center px-4 sm:px-6 flex flex-col items-center justify-center">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-[110px] font-serif font-bold tracking-[0.18em] text-white uppercase drop-shadow-2xl"
+            className="text-[42px] xs:text-[48px] sm:text-[64px] md:text-[84px] lg:text-[110px] font-serif font-bold tracking-[0.08em] sm:tracking-[0.12em] lg:tracking-[0.18em] text-white uppercase drop-shadow-2xl leading-tight"
           >
             Sri Sanjana
           </motion.h1>
 
-         <div className="min-h-[72px] flex items-center justify-center w-full max-w-xl px-6">
+         <div className="min-h-[56px] sm:min-h-[64px] md:min-h-[72px] flex items-center justify-center w-full max-w-[280px] sm:max-w-md md:max-w-xl px-2 sm:px-6 mt-2 sm:mt-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -108,27 +108,27 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8 }}
-                className="flex flex-wrap items-center justify-center gap-4"
+                className="flex flex-wrap items-center justify-center gap-2 sm:gap-4"
               >
-                <div className="block w-8 h-[2px] bg-[#F0C550]"></div>
+                <div className="hidden sm:block w-8 h-[2px] bg-[#F0C550]"></div>
                 <span
-                  className="text-2xl text-[#F0C550] uppercase tracking-[0.45em] font-bold text-center leading-6 px-4"
+                  className="text-sm xs:text-base sm:text-xl md:text-2xl text-[#F0C550] uppercase tracking-[0.2em] sm:tracking-[0.35em] md:tracking-[0.45em] font-bold text-center leading-5 sm:leading-6 px-2 sm:px-4"
                 >
                   {activeSlide.subtitle}
                 </span>
-                <div className="block w-8 h-[2px] bg-[#F0C550]"></div>
+                <div className="hidden sm:block w-8 h-[2px] bg-[#F0C550]"></div>
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
 
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+      <div className="absolute bottom-6 sm:bottom-8 left-0 right-0 z-20 flex justify-center gap-2 sm:gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`h-2 rounded-full transition-all duration-500 ${
-                idx === safeIndex ? "w-8 bg-gold" : "w-2 bg-white/40 hover:bg-white/70"
+              className={`h-1.5 sm:h-2 rounded-full transition-all duration-500 ${
+                idx === safeIndex ? "w-6 sm:w-8 bg-gold" : "w-1.5 sm:w-2 bg-white/40 hover:bg-white/70"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -136,7 +136,7 @@ export default function Hero() {
         </div>
       </section>
 
-    <section className="w-full py-16 px-6 relative z-10 overflow-hidden">
+    <section className="w-full py-10 sm:py-12 md:py-16 px-4 sm:px-6 relative z-10 overflow-hidden">
   <motion.div
     initial={{
       opacity: 0,
@@ -155,7 +155,7 @@ export default function Hero() {
       stiffness: 100,
       damping: 15,
     }}
-    className="max-w-[1000px] mx-auto rounded-[30px] bg-[#2b0f18]/95 backdrop-blur-xl border border-[#D4AF37]/20 shadow-[0_20px_60px_rgba(0,0,0,0.45)] px-12 py-10 text-center"
+    className="max-w-[1000px] mx-auto rounded-[16px] sm:rounded-[24px] md:rounded-[30px] bg-[#2b0f18]/95 backdrop-blur-xl border border-[#D4AF37]/20 shadow-[0_20px_60px_rgba(0,0,0,0.45)] px-5 py-8 sm:px-8 sm:py-9 md:px-12 md:py-10 text-center"
   >
     {/* Heading */}
     <motion.div
@@ -163,19 +163,19 @@ export default function Hero() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.2, duration: 0.5 }}
-      className="mb-8 flex items-center justify-center gap-4"
+      className="mb-6 sm:mb-8 flex items-center justify-center gap-2 sm:gap-4"
     >
-      <span className="w-14 h-[2px] bg-[#D4AF37]" />
+      <span className="w-8 sm:w-14 h-[2px] bg-[#D4AF37]" />
 
-      <span className="text-sm uppercase tracking-[0.35em] font-bold text-[#D4AF37]">
+      <span className="text-[11px] xs:text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.35em] font-bold text-[#D4AF37]">
         Welcome to Sri Sanjana
       </span>
 
-      <span className="w-14 h-[2px] bg-[#D4AF37]" />
+      <span className="w-8 sm:w-14 h-[2px] bg-[#D4AF37]" />
     </motion.div>
 
     {/* Content */}
-    <div className="max-w-[700px] mx-auto text-left text-white/90 text-lg leading-8 space-y-5">
+    <div className="max-w-[700px] mx-auto text-left text-white/90 text-base sm:text-lg leading-7 sm:leading-8 space-y-4 sm:space-y-5">
       <p>
         What began as a small home-based tailoring business has grown into a
         trusted brand serving customers across the globe. At Sri Sanjana, we
@@ -193,17 +193,17 @@ export default function Hero() {
 
       <ul className="space-y-3 py-2">
         <li className="flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37] flex-shrink-0"></span>
           <span>Authentic Bharathanatyam Costumes</span>
         </li>
 
         <li className="flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37] flex-shrink-0"></span>
           <span>Custom Tailoring & Designer Wear</span>
         </li>
 
         <li className="flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37] flex-shrink-0"></span>
           <span>Premium Beauty Parlour & Aesthetics</span>
         </li>
       </ul>
@@ -213,7 +213,7 @@ export default function Hero() {
         ensuring every stitch and design is executed with absolute perfection.
       </p>
 
-      <h3 className="pt-4 text-center font-serif text-3xl italic font-bold text-[#D4AF37]">
+      <h3 className="pt-4 text-center font-serif text-xl sm:text-2xl md:text-3xl italic font-bold text-[#D4AF37]">
         Thank you for being a part of the Sri Sanjana family.
       </h3>
     </div>
@@ -224,18 +224,18 @@ export default function Hero() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4, duration: 0.5 }}
-      className="mt-10 flex flex-row justify-center gap-4"
+      className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
     >
       <Link
         href="#services"
-        className="inline-flex items-center justify-center rounded-full border border-[#D4AF37] bg-[#D4AF37] px-8 py-3 text-sm font-semibold text-[#2b0f18] transition-all duration-300 hover:scale-105 hover:bg-transparent hover:text-[#D4AF37]"
+        className="inline-flex items-center justify-center rounded-full border border-[#D4AF37] bg-[#D4AF37] px-6 py-3 sm:px-8 text-sm font-semibold text-[#2b0f18] transition-all duration-300 hover:scale-105 hover:bg-transparent hover:text-[#D4AF37] w-full sm:w-auto"
       >
         Explore Our Services
       </Link>
 
       <Link
         href="/book-now"
-        className="inline-flex items-center justify-center rounded-full border border-[#D4AF37] bg-transparent px-8 py-3 text-sm font-semibold text-[#D4AF37] transition-all duration-300 hover:scale-105 hover:bg-[#D4AF37] hover:text-[#2b0f18]"
+        className="inline-flex items-center justify-center rounded-full border border-[#D4AF37] bg-transparent px-6 py-3 sm:px-8 text-sm font-semibold text-[#D4AF37] transition-all duration-300 hover:scale-105 hover:bg-[#D4AF37] hover:text-[#2b0f18] w-full sm:w-auto"
       >
         Book Now
       </Link>
