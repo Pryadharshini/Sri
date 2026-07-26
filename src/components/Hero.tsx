@@ -64,7 +64,7 @@ export default function Hero() {
     <>
       <section
         ref={ref}
-        className="relative w-full min-h-[88vh] md:h-screen flex flex-col items-center justify-center bg-[#1a1114]"
+        className="relative w-full min-h-[88vh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a1114]"
       >
 
         <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
@@ -175,7 +175,7 @@ export default function Hero() {
         </div>
       </section>
 
-    <section className="w-full py-16 px-4 sm:px-6 relative z-10 ">
+    <section className="w-full py-16 px-4 sm:px-6 relative z-10 overflow-hidden">
   <motion.div
     initial={{
       opacity: 0,
