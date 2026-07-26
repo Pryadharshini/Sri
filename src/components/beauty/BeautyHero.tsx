@@ -20,7 +20,7 @@ export default function BeautyHero() {
       <motion.div style={{ opacity }} className="absolute inset-0 w-full h-full flex z-0">
         <motion.div style={{ y: y1 }} className="w-1/3 h-[120%] relative -top-[10%]">
           <Image 
-            src="/assets/service_mehendi_1783356251879.png" 
+            src="/assets/mehendii.png" 
             alt="Mehendi Art" 
             fill 
             className="object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" 

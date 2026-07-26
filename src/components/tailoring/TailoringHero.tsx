@@ -20,7 +20,7 @@ export default function TailoringHero() {
       <motion.div style={{ opacity }} className="absolute inset-0 w-full h-full flex z-0">
         <motion.div style={{ y: y1 }} className="w-1/3 h-[120%] relative -top-[10%]">
           <Image 
-            src="/assets/tailoring_machine_girl.png" 
+            src="/assets/tailoring.png" 
             alt="Tailoring Machine" 
             fill 
             className="object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" 

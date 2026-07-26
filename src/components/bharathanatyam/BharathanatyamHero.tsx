@@ -28,7 +28,7 @@ export default function BharathanatyamHero() {
         </motion.div>
         <motion.div style={{ y: y2 }} className="w-1/3 h-[120%] relative -top-[5%]">
           <Image 
-            src="/assets/hero_bharatanatyam.png" 
+            src="/assets/bharatanatyam.png" 
             alt="Bharathanatyam Art" 
             fill 
             className="object-cover object-[center_30%] opacity-60 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" 
