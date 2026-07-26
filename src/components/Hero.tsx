@@ -82,15 +82,15 @@ export default function Hero() {
                 alt={activeSlide.subtitle}
                 fill
                 sizes="100vw"
-                className="
-                  object-cover
-                  object-center
-                  md:object-top
-                  scale-100
-                  md:scale-105
-                  transition-transform
-                  duration-[8s]
-                "
+               className="
+object-cover
+object-[center_25%] md:object-top
+md:object-top
+scale-100
+md:scale-105
+transition-transform
+duration-[8s]
+"
                 priority={safeIndex === 0}
               />
             </motion.div>
@@ -104,27 +104,24 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="
-              text-[38px]
-              min-[400px]:text-[42px]
-              sm:text-6xl
-              md:text-8xl
-              lg:text-[110px]
-              font-serif
-              font-bold
-              tracking-[0.08em]
-              md:tracking-[0.18em]
-              text-white
-              uppercase
-              drop-shadow-2xl
-              whitespace-normal
-              sm:whitespace-nowrap
-              mb-6
-            "
+text-[34px]
+min-[400px]:text-[40px]
+sm:text-6xl
+md:text-8xl
+lg:text-[110px]
+font-serif
+font-bold
+tracking-[0.08em]
+md:tracking-[0.18em]
+text-white
+uppercase
+drop-shadow-2xl
+"
           >
             Sri Sanjana
           </motion.h1>
 
-          <div className="h-16 flex items-center justify-center w-full max-w-xl px-6">
+         <div className="min-h-[72px] flex items-center justify-center w-full max-w-xl px-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -132,26 +129,24 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8 }}
-                className="flex items-center gap-2 md:gap-4 justify-center"
+                className="flex flex-wrap items-center justify-center gap-2 md:gap-4"
               >
                 <div className="hidden sm:block w-4 md:w-8 h-[2px] bg-[#F0C550]"></div>
                 <span
-                  className="
-                    text-xs
-                    sm:text-base
-                    md:text-2xl
-                    text-[#F0C550]
-                    uppercase
-                    tracking-[0.18em]
-                    sm:tracking-[0.3em]
-                    md:tracking-[0.45em]
-                    font-sans
-                    font-bold
-                    text-center
-                    leading-6
-                    px-4
-                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]
-                  "
+                 className="
+text-xs
+sm:text-base
+md:text-2xl
+text-[#F0C550]
+uppercase
+tracking-[0.18em]
+sm:tracking-[0.3em]
+md:tracking-[0.45em]
+font-bold
+text-center
+leading-6
+px-4
+"
                 >
                   {activeSlide.subtitle}
                 </span>
@@ -161,7 +156,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-14 md:bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+      <div className="absolute bottom-14 md:bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
