@@ -1,12 +1,59 @@
 @import "tailwindcss";
 
+/* ===========================
+   Global Reset
+=========================== */
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+
+  background: linear-gradient(
+    135deg,
+    #f3a4bc 0%,
+    #de82a3 50%,
+    #a83d5f 100%
+  );
+  background-attachment: fixed;
+
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
 :root {
-  --background: #f3a4bc; 
-  --foreground: #2a111a; 
-  
-  --glass-bg: rgba(255, 255, 255, 0.05); /* Extremely sheer, no white overpowering */
+  --background: #f3a4bc;
+  --foreground: #2a111a;
+
+  --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 @theme inline {
@@ -15,23 +62,17 @@
   --color-gold: #D4AF37;
   --color-gold-light: #F4E09E;
   --color-maroon: #5c1626;
+
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
 }
 
-body {
-  /* Completely removed all white. Deep, rich, saturated rose/pink gradient */
-  background: linear-gradient(135deg, #f3a4bc 0%, #de82a3 50%, #a83d5f 100%);
-  background-attachment: fixed;
-  color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ===========================
+   Utilities
+=========================== */
 
 @layer utilities {
-  
-  /* The Glassmorphism Class */
+
   .glass-panel {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
@@ -41,50 +82,58 @@ body {
     border-radius: 1.5rem;
   }
 
-  /* Elegant Glass Button */
   .btn-structured {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255,255,255,.7);
     color: var(--foreground);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: .2em;
     padding: 1rem 3rem;
-    font-size: 0.75rem;
+    font-size: .75rem;
     font-weight: 700;
-    border: 1px solid rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,.9);
     border-radius: 9999px;
     cursor: pointer;
-    transition: all 0.3s ease;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(243, 164, 188, 0.2);
+    transition: all .3s ease;
+    box-shadow: 0 4px 15px rgba(243,164,188,.2);
   }
 
   .btn-structured:hover {
     background: var(--foreground);
-    color: #ffffff;
+    color: #fff;
     transform: translateY(-2px);
   }
 
-  /* Custom Animations */
   @keyframes fade-in-up {
-    0% { opacity: 0; transform: translateY(50px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%,100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   .animate-fade-in-up {
-    animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fade-in-up 1.2s cubic-bezier(.16,1,.3,1) forwards;
   }
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   .animate-float-delayed {
     animation: float 6s ease-in-out 3s infinite;
   }
