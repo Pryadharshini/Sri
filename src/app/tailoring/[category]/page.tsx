@@ -47,7 +47,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             Contact us today to inquire about custom stitching, alterations, and pricing.
           </p>
           <a 
-            href="/#contact" 
+            href="/contact" 
             className="inline-flex items-center justify-center bg-foreground text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-foreground border border-foreground transition-colors duration-300 rounded-lg shadow-xl"
           >
             Inquire Now

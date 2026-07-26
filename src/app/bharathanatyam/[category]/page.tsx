@@ -52,7 +52,7 @@ export default async function BharathanatyamCategoryPage({ params }: { params: P
             Contact us today to inquire about sizes, pricing, and custom alterations for this model.
           </p>
           <a 
-            href="/#contact" 
+            href="/contact" 
             className="inline-flex items-center justify-center bg-foreground text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-foreground border border-foreground transition-colors duration-300 rounded-lg shadow-xl"
           >
             Inquire Now

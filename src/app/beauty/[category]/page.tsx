@@ -47,7 +47,7 @@ export default async function BeautyCategoryPage({ params }: { params: Promise<{
             Contact us today to inquire about our premium beauty services for your next occasion.
           </p>
           <a 
-            href="/#contact" 
+            href="/contact" 
             className="inline-flex items-center justify-center bg-foreground text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-foreground border border-foreground transition-colors duration-300 rounded-lg shadow-xl"
           >
             Inquire Now
