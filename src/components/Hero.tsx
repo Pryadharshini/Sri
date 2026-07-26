@@ -64,7 +64,7 @@ export default function Hero() {
     <>
       <section
         ref={ref}
-        className="relative w-full min-h-[88vh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a1114]"
+        className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a1114]"
       >
 
         <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
@@ -82,15 +82,7 @@ export default function Hero() {
                 alt={activeSlide.subtitle}
                 fill
                 sizes="100vw"
-               className="
-object-cover
-object-[center_25%] md:object-top
-md:object-top
-scale-100
-md:scale-105
-transition-transform
-duration-[8s]
-"
+                className="object-cover object-top scale-105 transition-transform duration-[8s]"
                 priority={safeIndex === 0}
               />
             </motion.div>
@@ -103,20 +95,7 @@ duration-[8s]
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="
-text-[34px]
-min-[400px]:text-[40px]
-sm:text-6xl
-md:text-8xl
-lg:text-[110px]
-font-serif
-font-bold
-tracking-[0.08em]
-md:tracking-[0.18em]
-text-white
-uppercase
-drop-shadow-2xl
-"
+            className="text-[110px] font-serif font-bold tracking-[0.18em] text-white uppercase drop-shadow-2xl"
           >
             Sri Sanjana
           </motion.h1>
@@ -129,34 +108,21 @@ drop-shadow-2xl
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8 }}
-                className="flex flex-wrap items-center justify-center gap-2 md:gap-4"
+                className="flex flex-wrap items-center justify-center gap-4"
               >
-                <div className="hidden sm:block w-4 md:w-8 h-[2px] bg-[#F0C550]"></div>
+                <div className="block w-8 h-[2px] bg-[#F0C550]"></div>
                 <span
-                 className="
-text-xs
-sm:text-base
-md:text-2xl
-text-[#F0C550]
-uppercase
-tracking-[0.18em]
-sm:tracking-[0.3em]
-md:tracking-[0.45em]
-font-bold
-text-center
-leading-6
-px-4
-"
+                  className="text-2xl text-[#F0C550] uppercase tracking-[0.45em] font-bold text-center leading-6 px-4"
                 >
                   {activeSlide.subtitle}
                 </span>
-                <div className="hidden sm:block w-4 md:w-8 h-[2px] bg-[#F0C550]"></div>
+                <div className="block w-8 h-[2px] bg-[#F0C550]"></div>
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
 
-      <div className="absolute bottom-14 md:bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
@@ -170,7 +136,7 @@ px-4
         </div>
       </section>
 
-    <section className="w-full py-16 px-4 sm:px-6 relative z-10 overflow-hidden">
+    <section className="w-full py-16 px-6 relative z-10 overflow-hidden">
   <motion.div
     initial={{
       opacity: 0,
@@ -189,7 +155,7 @@ px-4
       stiffness: 100,
       damping: 15,
     }}
-    className="max-w-[1000px] mx-auto rounded-[30px] bg-[#2b0f18]/95 backdrop-blur-xl border border-[#D4AF37]/20 shadow-[0_20px_60px_rgba(0,0,0,0.45)] px-6 sm:px-8 md:px-10 lg:px-12 py-10 text-center"
+    className="max-w-[1000px] mx-auto rounded-[30px] bg-[#2b0f18]/95 backdrop-blur-xl border border-[#D4AF37]/20 shadow-[0_20px_60px_rgba(0,0,0,0.45)] px-12 py-10 text-center"
   >
     {/* Heading */}
     <motion.div
@@ -201,7 +167,7 @@ px-4
     >
       <span className="w-14 h-[2px] bg-[#D4AF37]" />
 
-      <span className="text-xs md:text-sm uppercase tracking-[0.35em] font-bold text-[#D4AF37]">
+      <span className="text-sm uppercase tracking-[0.35em] font-bold text-[#D4AF37]">
         Welcome to Sri Sanjana
       </span>
 
@@ -209,7 +175,7 @@ px-4
     </motion.div>
 
     {/* Content */}
-    <div className="max-w-[700px] mx-auto text-left text-white/90 text-base md:text-lg leading-8 space-y-5">
+    <div className="max-w-[700px] mx-auto text-left text-white/90 text-lg leading-8 space-y-5">
       <p>
         What began as a small home-based tailoring business has grown into a
         trusted brand serving customers across the globe. At Sri Sanjana, we
@@ -247,7 +213,7 @@ px-4
         ensuring every stitch and design is executed with absolute perfection.
       </p>
 
-      <h3 className="pt-4 text-center font-serif text-2xl md:text-3xl italic font-bold text-[#D4AF37]">
+      <h3 className="pt-4 text-center font-serif text-3xl italic font-bold text-[#D4AF37]">
         Thank you for being a part of the Sri Sanjana family.
       </h3>
     </div>
@@ -258,7 +224,7 @@ px-4
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4, duration: 0.5 }}
-      className="mt-10 flex flex-col sm:flex-row justify-center gap-4"
+      className="mt-10 flex flex-row justify-center gap-4"
     >
       <Link
         href="#services"
