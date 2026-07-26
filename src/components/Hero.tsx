@@ -43,12 +43,12 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   // Safe index to prevent HMR out of bounds errors
   const safeIndex = currentIndex >= slides.length ? 0 : currentIndex;
   const activeSlide = slides[safeIndex];
@@ -62,8 +62,11 @@ export default function Hero() {
 
   return (
     <>
-      <section ref={ref} className="relative w-full h-[70vh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a1114]">
-        
+      <section
+        ref={ref}
+        className="relative w-full min-h-[88vh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a1114]"
+      >
+
         <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
           <AnimatePresence mode="popLayout">
             <motion.div
@@ -74,12 +77,20 @@ export default function Hero() {
               transition={{ duration: 1, ease: "easeInOut" }}
               className="absolute inset-0 w-full h-full"
             >
-              <Image 
-                src={activeSlide.image} 
-                alt={activeSlide.subtitle} 
-                fill 
+              <Image
+                src={activeSlide.image}
+                alt={activeSlide.subtitle}
+                fill
                 sizes="100vw"
-                className="object-cover object-top scale-105 transform transition-transform duration-[8s] hover:scale-110" 
+                className="
+                  object-cover
+                  object-center
+                  md:object-top
+                  scale-100
+                  md:scale-105
+                  transition-transform
+                  duration-[8s]
+                "
                 priority={safeIndex === 0}
               />
             </motion.div>
@@ -87,17 +98,33 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10 pointer-events-none"></div>
         </motion.div>
 
-        <div className="relative z-20 w-full text-center px-4 mt-20 flex flex-col items-center">
-          <motion.h1 
+        <div className="relative z-20 w-full text-center px-4 flex flex-col items-center justify-center">
+          <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-3xl min-[400px]:text-4xl sm:text-6xl md:text-8xl lg:text-[110px] font-serif text-white tracking-[0.1em] md:tracking-[0.2em] font-bold drop-shadow-2xl uppercase whitespace-normal sm:whitespace-nowrap mb-6"
+            className="
+              text-[38px]
+              min-[400px]:text-[42px]
+              sm:text-6xl
+              md:text-8xl
+              lg:text-[110px]
+              font-serif
+              font-bold
+              tracking-[0.08em]
+              md:tracking-[0.18em]
+              text-white
+              uppercase
+              drop-shadow-2xl
+              whitespace-normal
+              sm:whitespace-nowrap
+              mb-6
+            "
           >
             Sri Sanjana
           </motion.h1>
 
-          <div className="h-12 overflow-hidden flex items-center justify-center w-full px-2">
+          <div className="h-16 flex items-center justify-center w-full max-w-xl px-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -108,7 +135,24 @@ export default function Hero() {
                 className="flex items-center gap-2 md:gap-4 justify-center"
               >
                 <div className="hidden sm:block w-4 md:w-8 h-[2px] bg-[#F0C550]"></div>
-                <span className="text-base md:text-2xl text-[#F0C550] uppercase tracking-[0.25em] md:tracking-[0.45em] font-sans font-extrabold text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+                <span
+                  className="
+                    text-xs
+                    sm:text-base
+                    md:text-2xl
+                    text-[#F0C550]
+                    uppercase
+                    tracking-[0.18em]
+                    sm:tracking-[0.3em]
+                    md:tracking-[0.45em]
+                    font-sans
+                    font-bold
+                    text-center
+                    leading-6
+                    px-4
+                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]
+                  "
+                >
                   {activeSlide.subtitle}
                 </span>
                 <div className="hidden sm:block w-4 md:w-8 h-[2px] bg-[#F0C550]"></div>
@@ -117,7 +161,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+        <div className="absolute bottom-14 md:bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
@@ -236,7 +280,7 @@ export default function Hero() {
       </Link>
     </motion.div>
   </motion.div>
-  
+
 </section>
     </>
   );
