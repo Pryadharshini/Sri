@@ -37,6 +37,9 @@ export default function Footer() {
           <Link href="/beauty" className="text-xs uppercase tracking-[0.1em] font-sans font-bold text-white/90 hover:text-white transition-colors">
             Beauty Parlour
           </Link>
+           <Link href="/contact" className="text-xs uppercase tracking-[0.1em] font-sans font-bold text-white/90 hover:text-white transition-colors">
+    Contact
+  </Link>
         </div>
 
         {/* Bottom Bar */}
