@@ -64,7 +64,7 @@ export default function Hero() {
     <>
       <section
         ref={ref}
-        className="relative w-full min-h-[88vh] md:h-screen flex flex-col items-center justify-center bg-[#1a1114]"
+        className="relative w-full min-h-[88vh] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a1114]"
       >
 
         <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
