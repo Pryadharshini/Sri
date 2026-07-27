@@ -1,15 +1,14 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import fs from 'fs/promises'
-import path from 'path'
+import { put } from '@vercel/blob'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
 const MAX_SIZE_BYTES = 10 * 1024 * 1024 // 10MB
 
 function sanitizeFilename(name: string) {
-  const ext = path.extname(name).toLowerCase()
-  const base = path
-    .basename(name, ext)
+  const dotIndex = name.lastIndexOf('.')
+  const ext = dotIndex >= 0 ? name.slice(dotIndex).toLowerCase() : ''
+  const base = (dotIndex >= 0 ? name.slice(0, dotIndex) : name)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
@@ -32,17 +31,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'File too large (max 10MB)' }, { status: 400 })
   }
 
-  const uploadsDir = path.join(process.cwd(), 'public', 'assets', 'uploads')
-  await fs.mkdir(uploadsDir, { recursive: true })
-
   const safeName = sanitizeFilename(file.name)
   const uniqueName = `${Date.now()}-${safeName}`
-  const filePath = path.join(uploadsDir, uniqueName)
 
-  const buffer = Buffer.from(await file.arrayBuffer())
-  await fs.writeFile(filePath, buffer)
+  const blob = await put(`uploads/${uniqueName}`, file, {
+    access: 'public',
+  })
 
-  const publicPath = `/assets/uploads/${uniqueName}`
-
-  return NextResponse.json({ path: publicPath })
+  return NextResponse.json({ path: blob.url })
 }

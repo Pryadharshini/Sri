@@ -12,6 +12,9 @@ import {
 } from './db-content-store'
 import { type Category, type ContentData, type ImageSize, type Section } from './types'
 
+// Re-export so other files (like route.ts) can import these types from content-store
+export type { Category, ContentData, ImageSize, Section }
+
 // content.json lives at src/data/content.json, alongside your existing
 // beautyData.ts / bharathanatyamData.ts / tailoringData.ts
 const DATA_PATH = path.join(process.cwd(), 'src', 'data', 'content.json')
