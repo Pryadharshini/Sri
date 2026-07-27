@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { put } from '@vercel/blob'
+import fs from 'fs/promises'
+import path from 'path'
 
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
 const MAX_SIZE_BYTES = 10 * 1024 * 1024 // 10MB
@@ -33,10 +35,27 @@ export async function POST(request: NextRequest) {
 
   const safeName = sanitizeFilename(file.name)
   const uniqueName = `${Date.now()}-${safeName}`
+  try {
+    const blob = await put(`uploads/${uniqueName}`, file, {
+      access: 'public',
+    })
+    return NextResponse.json({ path: blob.url })
+  } catch (err: any) {
+    // If running locally (or blob not configured), attempt to write to public/uploads
+    if (process.env.NODE_ENV !== 'production') {
+      try {
+        const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
+        await fs.mkdir(uploadsDir, { recursive: true })
+        const arrayBuffer = await file.arrayBuffer()
+        const buffer = Buffer.from(arrayBuffer)
+        const outPath = path.join(uploadsDir, uniqueName)
+        await fs.writeFile(outPath, buffer)
+        return NextResponse.json({ path: `/uploads/${uniqueName}` })
+      } catch (fsErr: any) {
+        return NextResponse.json({ message: `Upload failed: ${String(fsErr.message || fsErr)}` }, { status: 500 })
+      }
+    }
 
-  const blob = await put(`uploads/${uniqueName}`, file, {
-    access: 'public',
-  })
-
-  return NextResponse.json({ path: blob.url })
+    return NextResponse.json({ message: `Upload failed: ${String(err?.message || err)}` }, { status: 500 })
+  }
 }
