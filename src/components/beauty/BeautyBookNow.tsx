@@ -7,7 +7,7 @@ export default function BeautyBookNow() {
     <BookAppointmentForm
       heading="Book an Appointment"
       tagline="Sri Sanjana Beauty Parlour"
-      whatsappNumber="917200695444" // TODO: replace with your WhatsApp business number (country code + number, no + or spaces)
+      whatsappNumber="91 83447 18008" // TODO: replace with your WhatsApp business number (country code + number, no + or spaces)
       categories={[
         "Saree Pre-Pleating",
         "Professional Makeup & Hairdo",

@@ -7,7 +7,7 @@ export default function TailoringBookNow() {
     <BookAppointmentForm
       heading="Book Your Order"
       tagline="Sri Sanjana Tailoring"
-      whatsappNumber="917200695444"// TODO: replace with your WhatsApp business number (country code + number, no + or spaces)
+     whatsappNumber="91 83447 18008"// TODO: replace with your WhatsApp business number (country code + number, no + or spaces)
       categories={[
         "Blouse Designs",
         "Ready-Made Blouses",
