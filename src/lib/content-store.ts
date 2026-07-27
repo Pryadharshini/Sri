@@ -1,31 +1,16 @@
 import fs from 'fs/promises'
 import path from 'path'
-
-export type ImageSize = 'square' | 'wide' | 'tall' | 'large'
-
-export type GalleryImage = {
-  id: number
-  src: string
-  category: string
-  size: ImageSize
-  colors?: string
-}
-
-export type Category = {
-  id: string
-  title: string
-  subtitle: string
-  cover: string
-  images: GalleryImage[]
-}
-
-export type ContentData = {
-  beauty: Category[]
-  bharathanatyam: Category[]
-  tailoring: Category[]
-}
-
-export type Section = keyof ContentData
+import { getPool } from './db'
+import {
+  fetchContentFromDb,
+  addCategoryToDb,
+  updateCategoryInDb,
+  deleteCategoryFromDb,
+  addImageToDb,
+  updateImageInDb,
+  deleteImageFromDb,
+} from './db-content-store'
+import { type Category, type ContentData, type ImageSize, type Section } from './types'
 
 // content.json lives at src/data/content.json, alongside your existing
 // beautyData.ts / bharathanatyamData.ts / tailoringData.ts
@@ -44,6 +29,11 @@ function slugify(text: string) {
 }
 
 export async function readContent(): Promise<ContentData> {
+  const pool = await getPool()
+  if (pool) {
+    return await fetchContentFromDb()
+  }
+
   const raw = await fs.readFile(DATA_PATH, 'utf-8')
   return JSON.parse(raw)
 }
@@ -56,6 +46,11 @@ export async function addCategory(
   section: Section,
   payload: { title: string; subtitle: string; cover: string }
 ) {
+  const pool = await getPool()
+  if (pool) {
+    return await addCategoryToDb(section, payload)
+  }
+
   const data = await readContent()
   const id = slugify(payload.title) || `category-${Date.now()}`
   data[section].push({ id, title: payload.title, subtitle: payload.subtitle, cover: payload.cover, images: [] })
@@ -68,6 +63,11 @@ export async function updateCategory(
   categoryId: string,
   updates: { title?: string; subtitle?: string; cover?: string }
 ) {
+  const pool = await getPool()
+  if (pool) {
+    return await updateCategoryInDb(section, categoryId, updates)
+  }
+
   const data = await readContent()
   const category = data[section].find((c) => c.id === categoryId)
   if (category) Object.assign(category, updates)
@@ -76,6 +76,11 @@ export async function updateCategory(
 }
 
 export async function deleteCategory(section: Section, categoryId: string) {
+  const pool = await getPool()
+  if (pool) {
+    return await deleteCategoryFromDb(section, categoryId)
+  }
+
   const data = await readContent()
   data[section] = data[section].filter((c) => c.id !== categoryId)
   await writeContent(data)
@@ -87,6 +92,11 @@ export async function addImage(
   categoryId: string,
   payload: { src: string; size: ImageSize; colors?: string }
 ) {
+  const pool = await getPool()
+  if (pool) {
+    return await addImageToDb(section, categoryId, payload)
+  }
+
   const data = await readContent()
   const category = data[section].find((c) => c.id === categoryId)
   if (category) {
@@ -110,6 +120,11 @@ export async function updateImage(
   imageId: number,
   updates: { src?: string; size?: ImageSize; colors?: string }
 ) {
+  const pool = await getPool()
+  if (pool) {
+    return await updateImageInDb(section, categoryId, imageId, updates)
+  }
+
   const data = await readContent()
   const category = data[section].find((c) => c.id === categoryId)
   const image = category?.images.find((i) => i.id === imageId)
@@ -119,6 +134,11 @@ export async function updateImage(
 }
 
 export async function deleteImage(section: Section, categoryId: string, imageId: number) {
+  const pool = await getPool()
+  if (pool) {
+    return await deleteImageFromDb(section, categoryId, imageId)
+  }
+
   const data = await readContent()
   const category = data[section].find((c) => c.id === categoryId)
   if (category) {
