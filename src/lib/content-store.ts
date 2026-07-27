@@ -34,7 +34,14 @@ function slugify(text: string) {
 export async function readContent(): Promise<ContentData> {
   const pool = await getPool()
   if (pool) {
-    return await fetchContentFromDb()
+    try {
+      const dbData = await fetchContentFromDb()
+      const count = (dbData.beauty?.length || 0) + (dbData.bharathanatyam?.length || 0) + (dbData.tailoring?.length || 0)
+      if (count > 0) return dbData
+      // If DB returned no categories, fall back to the bundled JSON file
+    } catch (err) {
+      // If anything goes wrong reading from the DB, fall back to file
+    }
   }
 
   const raw = await fs.readFile(DATA_PATH, 'utf-8')
