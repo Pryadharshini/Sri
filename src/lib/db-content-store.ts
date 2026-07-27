@@ -29,7 +29,6 @@ export async function fetchContentFromDb(): Promise<ContentData> {
   const imagesRes = await pool.query('SELECT * FROM images ORDER BY id')
 
   const data: ContentData = { beauty: [], bharathanatyam: [], tailoring: [] }
-  const categories = categoriesRes.rows.map(toCategoryRow)
 
   const imageMap: Record<string, ReturnType<typeof toImageRow>[]> = {}
   for (const row of imagesRes.rows) {
@@ -38,10 +37,12 @@ export async function fetchContentFromDb(): Promise<ContentData> {
     imageMap[row.category_id].push(image)
   }
 
-  for (const category of categories) {
+  for (const row of categoriesRes.rows) {
+    const category = toCategoryRow(row)
     category.images = imageMap[category.id] || []
-    if (data[category.section as keyof ContentData]) {
-      data[category.section as keyof ContentData].push(category)
+    const section = row.section as keyof ContentData
+    if (data[section]) {
+      data[section].push(category)
     }
   }
 
@@ -67,6 +68,9 @@ export async function addCategoryToDb(section: string, payload: { title: string;
 }
 
 export async function updateCategoryInDb(section: string, categoryId: string, updates: { title?: string; subtitle?: string; cover?: string }) {
+  const pool = await getPool()
+  if (!pool) throw new Error('Database not configured')
+
   const fields = []
   const values = []
   let idx = 1
