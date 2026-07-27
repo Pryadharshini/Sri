@@ -1,15 +1,45 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+type Category = {
+  id: string;
+  title: string;
+  subtitle: string;
+  cover: string;
+};
+
+const ICONS: Record<string, string> = {
+  "saree-pre-pleating": "🌸",
+  "professional-makeup-and-hairdo": "💋",
+  "mehndi-designs": "🌿",
+};
+const DEFAULT_ICON = "💄";
+
+const EXCLUDED_IDS = ["customer-reviews", "customer-photos"];
+
 export default function BeautyDescription() {
-  const menuCategories = [
-    { name: "Saree Pre-Pleating", link: "/beauty/saree-pre-pleating", icon: "🌸" },
-    { name: "Professional Makeup & Hairdo", link: "/beauty/professional-makeup-and-hairdo", icon: "💋" },
-    { name: "Mehndi Designs", link: "/beauty/mehndi-designs", icon: "🌿" },
-  ];
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then((res) => res.json())
+      .then((data) => {
+        const filtered = (data.beauty || []).filter(
+          (c: Category) => !EXCLUDED_IDS.includes(c.id)
+        );
+        setCategories(filtered);
+      })
+      .catch(() => setCategories([]));
+  }, []);
+
+  const menuCategories = categories.map((cat) => ({
+    name: cat.title,
+    link: `/beauty/${cat.id}`,
+    icon: ICONS[cat.id] || DEFAULT_ICON,
+  }));
 
   const features = [
     { icon: "💖", title: "Quality Service", text: "Dedicated care and attention in every appointment.", tag: "Trusted Care" },

@@ -1,18 +1,48 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+type Category = {
+  id: string;
+  title: string;
+  subtitle: string;
+  cover: string;
+};
+
+const ICONS: Record<string, string> = {
+  "sun-pleated-pant": "🏵️",
+  "sun-pleated-pant-thread-border": "🧵",
+  "skirt-model": "👗",
+  "practice-sarees": "💃",
+  "saree-convert-costumes": "✂️",
+  "jewelery-and-accessories": "💎",
+};
+const DEFAULT_ICON = "🎭";
+
+const EXCLUDED_IDS = ["customer-photos", "customer-reviews"];
+
 export default function BharathanatyamDescription() {
-  const menuCategories = [
-    { name: "Sun Pleated Pant Model with Silk Zari Border", link: "/bharathanatyam/sun-pleated-pant", icon: "🏵️" },
-    { name: "Sun Pleated Pant Model with Thread Border", link: "/bharathanatyam/sun-pleated-pant-thread-border", icon: "🧵" },
-    { name: "Skirt Model", link: "/bharathanatyam/skirt-model", icon: "👗" },
-    { name: "Practice Sarees", link: "/bharathanatyam/practice-sarees", icon: "💃" },
-    { name: "Saree Convert Costumes", link: "/bharathanatyam/saree-convert-costumes", icon: "✂️" },
-    { name: "Jewelry & Accessories", link: "/bharathanatyam/jewelery-and-accessories", icon: "💎" },
-  ];
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then((res) => res.json())
+      .then((data) => {
+        const filtered = (data.bharathanatyam || []).filter(
+          (c: Category) => !EXCLUDED_IDS.includes(c.id)
+        );
+        setCategories(filtered);
+      })
+      .catch(() => setCategories([]));
+  }, []);
+
+  const menuCategories = categories.map((cat) => ({
+    name: cat.title,
+    link: `/bharathanatyam/${cat.id}`,
+    icon: ICONS[cat.id] || DEFAULT_ICON,
+  }));
 
   const features = [
     { icon: "✨", title: "Custom Fit", text: "Customized designs with perfect fitting and quality stitching.", tag: "Perfect Fitting" },

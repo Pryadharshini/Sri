@@ -1,10 +1,79 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+type Category = {
+  id: string;
+  title: string;
+  subtitle: string;
+  cover: string;
+};
+
+const ICONS: Record<string, string> = {
+  "blouse-designs": "👚",
+  "ready-made-blouses": "🛍️",
+  "aari-work-blouses": "🪡",
+  "machine-embroidery": "🧵",
+  "pattu-pavadai": "🎀",
+  "lehenga": "🏵️",
+  "customized-chudi-sets": "✨",
+  "mom-and-daughter-combo": "👩‍👧",
+  "siblings-combo": "👯‍♀️",
+  "family-combos": "👨‍👩‍👧‍👦",
+  "long-gowns": "👗",
+  "kids-gown": "👧",
+  "saree": "💃",
+};
+const DEFAULT_ICON = "🧵";
+
+const EXCLUDED_IDS = ["customer-photos", "customer-reviews", "book-now"];
+
+type Visibility = {
+  bookNow: boolean;
+  customerPhotos: boolean;
+  customerReviews: boolean;
+};
+
+const DEFAULT_VISIBILITY: Visibility = {
+  bookNow: true,
+  customerPhotos: true,
+  customerReviews: true,
+};
+
 export default function TailoringDescription() {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [visibility, setVisibility] = useState<Visibility>(DEFAULT_VISIBILITY);
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then((res) => res.json())
+      .then((data) => {
+        const filtered = (data.tailoring || []).filter(
+          (c: Category) => !EXCLUDED_IDS.includes(c.id)
+        );
+        setCategories(filtered);
+
+        const v = data.tailoringVisibility || {};
+        setVisibility({
+          bookNow: v.bookNow ?? true,
+          customerPhotos: v.customerPhotos ?? true,
+          customerReviews: v.customerReviews ?? true,
+        });
+      })
+      .catch(() => {
+        setCategories([]);
+        setVisibility(DEFAULT_VISIBILITY);
+      });
+  }, []);
+
+  const menuCategories = categories.map((cat) => ({
+    name: cat.title,
+    link: `/tailoring/${cat.id}`,
+    icon: ICONS[cat.id] || DEFAULT_ICON,
+  }));
+
   const stitchingList = [
     "Pattu Pavadai",
     "Lehenga",
@@ -12,21 +81,6 @@ export default function TailoringDescription() {
     "Long Gowns",
     "Kids & Adult Wear",
     "All Types of Custom Stitching"
-  ];
-
-  const menuCategories = [
-    { name: "Blouse Designs", link: "/tailoring/blouse-designs", icon: "👚" },
-    { name: "Ready-Made Blouses", link: "/tailoring/ready-made-blouses", icon: "🛍️" },
-    { name: "Aari Work Blouses", link: "/tailoring/aari-work-blouses", icon: "🪡" },
-    { name: "Machine Embroidery", link: "/tailoring/machine-embroidery", icon: "🧵" },
-    { name: "Pattu Pavadai", link: "/tailoring/pattu-pavadai", icon: "🎀" },
-    { name: "Lehenga", link: "/tailoring/lehenga", icon: "🏵️" },
-    { name: "Customized Chudi Sets", link: "/tailoring/customized-chudi-sets", icon: "✨" },
-    { name: "Mom & Daughter Combo", link: "/tailoring/mom-and-daughter-combo", icon: "👩‍👧" },
-    { name: "Siblings Combo", link: "/tailoring/siblings-combo", icon: "👯‍♀️" },
-    { name: "Family Combos", link: "/tailoring/family-combos", icon: "👨‍👩‍👧‍👦" },
-    { name: "Long Gowns", link: "/tailoring/long-gowns", icon: "👗" },
-    { name: "Kids Gowns", link: "/tailoring/kids-gown", icon: "👧" },
   ];
 
   const features = [
@@ -177,63 +231,69 @@ export default function TailoringDescription() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="flex flex-col gap-6 h-full"
           >
-            <Link
-              href="/tailoring/book-now"
-              className="group relative overflow-hidden rounded-full shadow-xl bg-gold p-6 flex items-center justify-between gap-4 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <motion.div
-                className="absolute inset-0 bg-white/20"
-                initial={{ x: "-120%" }}
-                animate={{ x: "220%" }}
-                transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
-                style={{ width: "40%", skewX: -20 }}
-              />
-              <div className="relative z-10 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-foreground/10 flex items-center justify-center shrink-0">
-                  <span className="text-xl">📅</span>
-                </div>
-                <span className="text-lg md:text-xl font-serif font-bold text-foreground drop-shadow-sm">
-                  Book Now
-                </span>
-              </div>
-              <ArrowRight className="relative z-10 w-6 h-6 text-foreground shrink-0 group-hover:translate-x-2 transition-transform" />
-            </Link>
-
-            <Link
-              href="/tailoring/customer-photos"
-              className="group flex-1 relative overflow-hidden rounded-[40px] shadow-xl bg-gradient-to-br from-[#3a1420] to-[#2B0E16] border border-gold/30 text-white p-8 flex flex-col justify-center hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <div className="w-14 h-14 rounded-full border-2 border-gold/50 flex items-center justify-center bg-gold/10 mb-5 group-hover:border-gold group-hover:bg-gold/20 transition-all duration-300">
-                    <span className="text-2xl">📸</span>
+            {visibility.bookNow && (
+              <Link
+                href="/tailoring/book-now"
+                className="group relative overflow-hidden rounded-full shadow-xl bg-gold p-6 flex items-center justify-between gap-4 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <motion.div
+                  className="absolute inset-0 bg-white/20"
+                  initial={{ x: "-120%" }}
+                  animate={{ x: "220%" }}
+                  transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
+                  style={{ width: "40%", skewX: -20 }}
+                />
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-foreground/10 flex items-center justify-center shrink-0">
+                    <span className="text-xl">📅</span>
                   </div>
-                  <h3 className="text-2xl font-serif font-bold text-white">Customer Photos</h3>
-                  <p className="text-white/70 mt-2 text-sm">
-                    View our latest stitching works and completed outfits.
-                  </p>
+                  <span className="text-lg md:text-xl font-serif font-bold text-foreground drop-shadow-sm">
+                    Book Now
+                  </span>
                 </div>
-                <ArrowRight className="w-6 h-6 text-gold shrink-0 group-hover:translate-x-2 transition-transform" />
-              </div>
-            </Link>
+                <ArrowRight className="relative z-10 w-6 h-6 text-foreground shrink-0 group-hover:translate-x-2 transition-transform" />
+              </Link>
+            )}
 
-            <Link
-              href="/tailoring/customer-reviews"
-              className="group flex-1 relative overflow-hidden rounded-[40px] shadow-xl border border-gold/40 bg-gradient-to-br from-[#3a1420] to-[#2B0E16] text-white p-8 flex flex-col justify-center hover:shadow-2xl hover:-translate-y-1 hover:border-gold transition-all duration-300"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <div className="w-14 h-14 rounded-full border-2 border-gold/50 flex items-center justify-center bg-gold/15 mb-5 group-hover:border-gold group-hover:bg-gold/25 transition-all duration-300">
-                    <span className="text-2xl">⭐</span>
+            {visibility.customerPhotos && (
+              <Link
+                href="/tailoring/customer-photos"
+                className="group flex-1 relative overflow-hidden rounded-[40px] shadow-xl bg-gradient-to-br from-[#3a1420] to-[#2B0E16] border border-gold/30 text-white p-8 flex flex-col justify-center hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <div className="w-14 h-14 rounded-full border-2 border-gold/50 flex items-center justify-center bg-gold/10 mb-5 group-hover:border-gold group-hover:bg-gold/20 transition-all duration-300">
+                      <span className="text-2xl">📸</span>
+                    </div>
+                    <h3 className="text-2xl font-serif font-bold text-white">Customer Photos</h3>
+                    <p className="text-white/70 mt-2 text-sm">
+                      View our latest stitching works and completed outfits.
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-serif font-bold text-white">Customer Reviews</h3>
-                  <p className="text-white/70 mt-2 text-sm">
-                    Read genuine reviews from our happy customers.
-                  </p>
+                  <ArrowRight className="w-6 h-6 text-gold shrink-0 group-hover:translate-x-2 transition-transform" />
                 </div>
-                <ArrowRight className="w-6 h-6 text-gold shrink-0 group-hover:translate-x-2 transition-transform" />
-              </div>
-            </Link>
+              </Link>
+            )}
+
+            {visibility.customerReviews && (
+              <Link
+                href="/tailoring/customer-reviews"
+                className="group flex-1 relative overflow-hidden rounded-[40px] shadow-xl border border-gold/40 bg-gradient-to-br from-[#3a1420] to-[#2B0E16] text-white p-8 flex flex-col justify-center hover:shadow-2xl hover:-translate-y-1 hover:border-gold transition-all duration-300"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <div className="w-14 h-14 rounded-full border-2 border-gold/50 flex items-center justify-center bg-gold/15 mb-5 group-hover:border-gold group-hover:bg-gold/25 transition-all duration-300">
+                      <span className="text-2xl">⭐</span>
+                    </div>
+                    <h3 className="text-2xl font-serif font-bold text-white">Customer Reviews</h3>
+                    <p className="text-white/70 mt-2 text-sm">
+                      Read genuine reviews from our happy customers.
+                    </p>
+                  </div>
+                  <ArrowRight className="w-6 h-6 text-gold shrink-0 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </Link>
+            )}
           </motion.div>
 
         </div>
