@@ -23,7 +23,7 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
     "Detailed machine embroidery work offering intricate patterns with consistent precision, ideal for blouses, dupattas, and borders.",
   "pattu-pavadai":
     "Traditional pattu pavadai sets in vibrant silk, designed with classic zari borders — perfect for little ones on festive occasions.",
-  "lehenga":
+  lehenga:
     "Designer lehengas tailored to fit, featuring rich fabrics, detailed embroidery, and flowing silhouettes for weddings and celebrations.",
   "customized-chudi-sets":
     "Fully customized chudi sets designed to your measurements and style preferences, blending comfort with elegant detailing.",
@@ -37,7 +37,7 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
     "Elegant long gowns tailored for a flattering fit, available in a range of fabrics and styles for parties and formal occasions.",
   "kids-gown":
     "Adorable kids' gowns combining comfort and style, custom stitched to size for birthdays, functions, and special days.",
-  "saree":
+  saree:
     "Beautifully draped and finished saree styling with custom blouse pairing options, tailored to bring out the fabric's best.",
 };
 
@@ -48,10 +48,16 @@ function getCategoryDescription(id: string, title: string, subtitle: string) {
   );
 }
 
-export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
   const resolvedParams = await params;
   const content = await readContent();
-  const categoryData = content.tailoring.find((c) => c.id === resolvedParams.category);
+  const categoryData = content.tailoring.find(
+    (c) => c.id === resolvedParams.category,
+  );
 
   if (!categoryData) {
     notFound();
@@ -60,7 +66,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const description = getCategoryDescription(
     categoryData.id,
     categoryData.title,
-    categoryData.subtitle
+    categoryData.subtitle,
   );
 
   return (
@@ -69,7 +75,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
       <div className="flex-grow pt-32 pb-12 px-6 max-w-[1400px] mx-auto w-full relative z-20">
         <section className="text-center mb-0 mt-8">
-          <Link href="/tailoring#collections" className="inline-flex items-center gap-2 text-foreground/50 hover:text-foreground text-xs uppercase tracking-widest font-bold transition-colors">
+          <Link
+            href="/tailoring#collections"
+            className="inline-flex items-center gap-2 text-foreground/50 hover:text-foreground text-xs uppercase tracking-widest font-bold transition-colors"
+          >
             <ArrowLeft className="w-4 h-4" />
             Back to Tailoring Categories
           </Link>
@@ -84,25 +93,24 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         />
 
         {/* Contact CTA */}
-<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-  <a
-    href="/tailoring/book-now"
-    className="inline-flex items-center justify-center gap-2 bg-gold text-foreground px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-gold border border-gold transition-colors duration-300 rounded-lg shadow-xl"
-  >
-    <CalendarCheck className="w-4 h-4" />
-    Book Now
-  </a>
+        <div className="mt-32 text-center border-t border-foreground/10 pt-20 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-serif text-foreground font-bold mb-6">
+            Interested in this design?
+          </h2>
+          <p className="text-foreground/70 font-sans mb-8">
+            Contact us today to inquire about sizes, pricing, and custom
+            alterations for this model.
+          </p>
+          <a
+            href="/contact"
+            className="inline-flex items-center justify-center bg-foreground text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-foreground border border-foreground transition-colors duration-300 rounded-lg shadow-xl"
+          >
+            Inquire Now
+          </a>
+        </div>
+      </div>
 
-  <a
-    href="/contact"
-    className="inline-flex items-center justify-center bg-foreground text-white px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-foreground border border-foreground transition-colors duration-300 rounded-lg shadow-xl"
-  >
-    Inquire Now
-  </a>
-</div>
-</div>
-
-<Footer />
+      <Footer />
     </main>
   );
 }

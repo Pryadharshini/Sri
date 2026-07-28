@@ -1,7 +1,15 @@
 "use client";
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { User, Phone, CalendarDays, Clock, MessageSquare, Send, ChevronDown } from 'lucide-react';
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { motion } from "framer-motion";
+import {
+  User,
+  Phone,
+  CalendarDays,
+  Clock,
+  MessageSquare,
+  Send,
+  ChevronDown,
+} from "lucide-react";
 
 export interface BookAppointmentFormProps {
   heading?: string;
@@ -53,7 +61,11 @@ export default function BookAppointmentForm({
 
   const handleChange =
     (field: keyof BookingFormState) =>
-    (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    (
+      e: ChangeEvent<
+        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      >,
+    ) => {
       const { value } = e.target;
       setForm((prev) => ({ ...prev, [field]: value }));
       if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -89,12 +101,11 @@ export default function BookAppointmentForm({
   };
 
   const inputClass =
-    "w-full rounded-xl border border-gold/30 bg-white/70 dark:bg-white/5 px-4 py-3 text-sm font-sans text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all duration-300";
+    "w-full rounded-xl border border-gold/30 bg-white/70 px-4 py-3 text-sm font-sans text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all duration-300";
 
   return (
     <section className="w-full py-24 bg-background relative z-20">
       <div className="max-w-[700px] mx-auto px-6 md:px-12">
-
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -117,14 +128,15 @@ export default function BookAppointmentForm({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative overflow-hidden rounded-[28px] shadow-xl bg-gradient-to-b from-[#fdf0f3] to-[#fbe4ea] dark:from-zinc-900 dark:to-zinc-950 border border-gold/30"
+          className="relative overflow-hidden rounded-[28px] shadow-xl bg-gradient-to-b from-[#fdf0f3] to-[#fbe4ea] border border-gold/30"
         >
           <div
             className="absolute inset-0 opacity-[0.35] pointer-events-none"
             style={{
-              backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)',
-              backgroundSize: '18px 18px',
-              color: 'var(--gold, #c9a15a)'
+              backgroundImage:
+                "radial-gradient(currentColor 1px, transparent 1px)",
+              backgroundSize: "18px 18px",
+              color: "var(--gold, #c9a15a)",
             }}
           />
 
@@ -140,8 +152,10 @@ export default function BookAppointmentForm({
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="relative z-10 p-8 md:p-10 space-y-5">
-
+          <form
+            onSubmit={handleSubmit}
+            className="relative z-10 p-8 md:p-10 space-y-5"
+          >
             {/* Name */}
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-foreground/80 mb-2">
@@ -154,7 +168,9 @@ export default function BookAppointmentForm({
                 onChange={handleChange("name")}
                 className={inputClass}
               />
-              {errors.name && <p className="text-xs text-rose-600 mt-1">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-xs text-rose-600 mt-1">{errors.name}</p>
+              )}
             </div>
 
             {/* Phone */}
@@ -169,7 +185,9 @@ export default function BookAppointmentForm({
                 onChange={handleChange("phone")}
                 className={inputClass}
               />
-              {errors.phone && <p className="text-xs text-rose-600 mt-1">{errors.phone}</p>}
+              {errors.phone && (
+                <p className="text-xs text-rose-600 mt-1">{errors.phone}</p>
+              )}
             </div>
 
             {/* Category */}
@@ -185,7 +203,9 @@ export default function BookAppointmentForm({
                     className={`${inputClass} appearance-none pr-10`}
                   >
                     {categories.map((c, i) => (
-                      <option key={i} value={c}>{c}</option>
+                      <option key={i} value={c}>
+                        {c}
+                      </option>
                     ))}
                   </select>
                   <ChevronDown className="w-4 h-4 text-gold absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -193,11 +213,11 @@ export default function BookAppointmentForm({
               </div>
             )}
 
-           
             {/* Details */}
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-foreground/80 mb-2">
-                <MessageSquare className="w-4 h-4 text-gold" /> Order Details / Measurements
+                <MessageSquare className="w-4 h-4 text-gold" /> Order Details /
+                Measurements
               </label>
               <textarea
                 rows={4}
@@ -219,7 +239,12 @@ export default function BookAppointmentForm({
                 className="absolute inset-0 bg-white/20"
                 initial={{ x: "-120%" }}
                 animate={{ x: "220%" }}
-                transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  repeatDelay: 1.5,
+                  ease: "easeInOut",
+                }}
                 style={{ width: "40%", skewX: -20 }}
               />
               <Send className="relative z-10 w-5 h-5 text-white" />
@@ -229,7 +254,8 @@ export default function BookAppointmentForm({
             </motion.button>
 
             <p className="text-center text-xs text-foreground/50 pt-1">
-              You'll be redirected to WhatsApp with your order pre-filled — just hit send.
+              You'll be redirected to WhatsApp with your order pre-filled — just
+              hit send.
             </p>
           </form>
         </motion.div>
