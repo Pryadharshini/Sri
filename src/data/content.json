@@ -692,23 +692,10 @@
           "category": "Sun Pleated Pant",
           "size": "tall",
           "colors": "Pink & Forest Green"
-        },
-        {
-          "id": 6,
-          "src": "/assets/dress6.jpeg",
-          "category": "Sun Pleated Pant",
-          "size": "tall",
-          "colors": "Pink & Gold"
-        },
-        {
-          "id": 7,
-          "src": "/assets/dress7.jpeg",
-          "category": "Sun Pleated Pant",
-          "size": "tall",
-          "colors": "Pink & Red"
         }
       ]
     },
+
     {
       "id": "sun-pleated-pant-thread-border",
       "title": "Sun Pleated Pant Model with Thread Border",
@@ -895,10 +882,39 @@
           "src": "/assets/skirtmodel/sm10.jpeg",
           "category": "Skirt Model",
           "size": "tall"
+        },
+        {
+          "id": 11,
+          "src": "/assets/skirtmodel/sm11.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 12,
+          "src": "/assets/skirtmodel/sm12.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 13,
+          "src": "/assets/skirtmodel/sm13.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 14,
+          "src": "/assets/skirtmodel/sm14.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 15,
+          "src": "/assets/skirtmodel/sm15.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
         }
       ]
     },
-    
     {
       "id": "practice-sarees",
       "title": "Practice Sarees",
