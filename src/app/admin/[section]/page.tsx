@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, use, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 
 type ImageSize = "square" | "wide" | "tall" | "large";
@@ -36,12 +37,9 @@ const LABELS: Record<string, string> = {
   tailoring: "Tailoring",
 };
 
-export default function SectionAdminPage({
-  params,
-}: {
-  params: Promise<{ section: string }>;
-}) {
-  const { section } = use(params);
+export default function SectionAdminPage() {
+  const params = useParams();
+  const section = params?.section as string;
   const [data, setData] = useState<ContentData | null>(null);
   const [availableFiles, setAvailableFiles] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);

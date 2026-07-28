@@ -51,7 +51,10 @@ export default function TailoringDescription() {
       .then((res) => res.json())
       .then((data) => {
         const filtered = (data.tailoring || []).filter(
-          (c: Category) => !EXCLUDED_IDS.includes(c.id),
+          (c: Category) =>
+            !EXCLUDED_IDS.includes(c.id) &&
+            !c.id.includes("customer") &&
+            !c.title.toLowerCase().includes("customer"),
         );
         setCategories(filtered);
 
