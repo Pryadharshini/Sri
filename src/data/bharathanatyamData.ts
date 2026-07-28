@@ -118,13 +118,7 @@ export const bharathanatyamCategories = [
     cover: threadBorderImages[0]?.src,
     images: threadBorderImages
   },
-  {
-    id: "fan-pant",
-    title: "Fan Pant Model",
-    subtitle: "Traditional Design",
-    cover: "/assets/collection1.jpeg",
-    images: []
-  },
+ 
   {
     id: "skirt-model",
     title: "Skirt Model",
@@ -132,13 +126,7 @@ export const bharathanatyamCategories = [
     cover: skirtModelImages[0]?.src,
     images: skirtModelImages
   },
-  {
-    id: "pyjama-model",
-    title: "Pyjama Model",
-    subtitle: "Comfort & Style",
-    cover: "/assets/dress3.jpeg",
-    images: []
-  },
+
   {
     id: "practice-sarees",
     title: "Practice Sarees",
