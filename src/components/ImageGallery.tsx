@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useMemo, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,6 +31,10 @@ export default function ImageGallery({
 }: ImageGalleryProps) {
   // index into displayImages, or null when the viewer is closed
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  // portals need the DOM, so wait for the client
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   // Ordering logic hoisted out of the render so the viewer and the grid
   // walk the exact same list.
@@ -37,11 +42,12 @@ export default function ImageGallery({
     if (title === "Sun Pleated Pant Model with Silk Zari Border") {
       const chartImage = images[images.length - 1];
       const modelImages = images.filter(
-        (img) => img.src && img.src.includes("/models/")
+        (img) => img.src && img.src.includes("/models/"),
       );
       const dressImages = images.filter(
         (img) =>
-          img.id !== chartImage.id && (!img.src || !img.src.includes("/models/"))
+          img.id !== chartImage.id &&
+          (!img.src || !img.src.includes("/models/")),
       );
       return [...dressImages, ...modelImages, chartImage];
     }
@@ -59,7 +65,7 @@ export default function ImageGallery({
         return (current + delta + total) % total;
       });
     },
-    [displayImages.length]
+    [displayImages.length],
   );
 
   // Keyboard navigation + scroll lock while the viewer is open
@@ -305,87 +311,92 @@ export default function ImageGallery({
         </div>
       </div>
 
-      {/* Full-screen image viewer */}
-      <AnimatePresence>
-        {activeImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={close}
-            role="dialog"
-            aria-modal="true"
-            aria-label={activeImage.category}
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
-          >
-            {/* Close */}
-            <button
-              type="button"
-              onClick={close}
-              aria-label="Close image"
-              className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
+      {/* Full-screen image viewer — portalled to <body> so page-level
+          stacking contexts (this section, the fixed header) can't cover it */}
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {activeImage && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={close}
+                role="dialog"
+                aria-modal="true"
+                aria-label={activeImage.category}
+                className="fixed inset-0 z-[2147483000] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
+              >
+                {/* Close */}
+                <button
+                  type="button"
+                  onClick={close}
+                  aria-label="Close image"
+                  className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
 
-            {displayImages.length > 1 && (
-              <>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    step(-1);
-                  }}
-                  aria-label="Previous image"
-                  className="absolute left-2 md:left-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
+                {displayImages.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        step(-1);
+                      }}
+                      aria-label="Previous image"
+                      className="absolute left-2 md:left-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
+                    >
+                      <ChevronLeft className="w-6 h-6" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        step(1);
+                      }}
+                      aria-label="Next image"
+                      className="absolute right-2 md:right-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
+                    >
+                      <ChevronRight className="w-6 h-6" />
+                    </button>
+                  </>
+                )}
+
+                <motion.div
+                  key={activeImage.id}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative w-full h-full max-w-6xl"
                 >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    step(1);
-                  }}
-                  aria-label="Next image"
-                  className="absolute right-2 md:right-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </>
+                  <Image
+                    src={activeImage.src}
+                    alt={activeImage.category}
+                    fill
+                    sizes="100vw"
+                    priority
+                    className="object-contain"
+                  />
+                </motion.div>
+
+                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-center text-white/70 text-xs uppercase tracking-[0.3em] pointer-events-none">
+                  {activeImage.category}
+                  {displayImages.length > 1 && (
+                    <span className="ml-3 text-white/40">
+                      {(activeIndex ?? 0) + 1} / {displayImages.length}
+                    </span>
+                  )}
+                </div>
+              </motion.div>
             )}
-
-            <motion.div
-              key={activeImage.id}
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full h-full max-w-6xl"
-            >
-              <Image
-                src={activeImage.src}
-                alt={activeImage.category}
-                fill
-                sizes="100vw"
-                priority
-                className="object-contain"
-              />
-            </motion.div>
-
-            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-center text-white/70 text-xs uppercase tracking-[0.3em] pointer-events-none">
-              {activeImage.category}
-              {displayImages.length > 1 && (
-                <span className="ml-3 text-white/40">
-                  {(activeIndex ?? 0) + 1} / {displayImages.length}
-                </span>
-              )}
-            </div>
-          </motion.div>
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </section>
   );
 }
