@@ -37,7 +37,7 @@ export const sunPleatedPantImages: GalleryItem[] = Array.from({ length: 33 }, (_
   const isModel = [17, 25, 26, 28, 29, 30, 31].includes(i + 1);
   const folder = isModel ? "models/" : "";
   return {
-    id: `sun-pleated-silk-${i + 1}`,
+    id: i + 1,
     src: `/assets/sun_pleated_pant_model_with_silk_zari_border/${folder}dress${i + 1}.jpeg`,
     category: "Sun Pleated Pant Model",
     size: "tall" as Size,
