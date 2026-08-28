@@ -180,14 +180,14 @@ export default function ImageGallery({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="col-span-full mt-16 relative overflow-hidden rounded-[2.5rem] bg-[#1a0a10] border border-gold/20 shadow-2xl group flex flex-col md:flex-row items-stretch"
+                  className="col-span-full mt-10 md:mt-16 relative overflow-hidden rounded-3xl md:rounded-[2.5rem] bg-[#1a0a10] border border-gold/20 shadow-2xl group flex flex-col md:flex-row items-stretch"
                 >
                   {/* Background glow effects */}
-                  <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[120px] mix-blend-screen pointer-events-none transition-transform duration-1000 group-hover:scale-110"></div>
-                  <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#ff4d85]/10 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
+                  <div className="absolute top-0 right-0 w-[260px] h-[260px] md:w-[500px] md:h-[500px] bg-gold/10 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen pointer-events-none transition-transform duration-1000 group-hover:scale-110"></div>
+                  <div className="absolute bottom-0 left-0 w-[260px] h-[260px] md:w-[500px] md:h-[500px] bg-[#ff4d85]/10 rounded-full blur-[80px] md:blur-[120px] mix-blend-screen pointer-events-none"></div>
 
                   {/* Left: Text & CTA */}
-                  <div className="w-full md:w-5/12 flex flex-col justify-center text-center md:text-left p-10 md:p-16 lg:p-20 relative z-10">
+                  <div className="w-full md:w-5/12 flex flex-col justify-center text-center md:text-left px-6 py-10 sm:px-10 md:p-16 lg:p-20 relative z-10">
                     <div className="inline-flex items-center gap-3 justify-center md:justify-start mb-6">
                       <span className="w-12 h-[1px] bg-gold/60"></span>
                       <span className="text-gold uppercase tracking-[0.3em] text-xs font-bold">
@@ -195,14 +195,14 @@ export default function ImageGallery({
                       </span>
                     </div>
 
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white font-bold leading-[1.1] mb-6">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white font-bold leading-[1.1] mb-4 md:mb-6">
                       Custom <br />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-[#ffd78a] to-gold">
                         Combinations
                       </span>
                     </h3>
 
-                    <p className="text-white/60 text-base md:text-lg font-light leading-relaxed mb-10">
+                    <p className="text-white/60 text-sm sm:text-base md:text-lg font-light leading-relaxed mb-8 md:mb-10">
                       This model can be tailored in absolutely any color
                       combination you desire. Choose your perfect shades and let
                       us bring your vision to life.
@@ -211,7 +211,7 @@ export default function ImageGallery({
                     <div>
                       <a
                         href={bookNowHref}
-                        className="inline-flex items-center gap-3 bg-gradient-to-r from-gold to-[#c9a15a] text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(201,161,90,0.3)]"
+                        className="inline-flex items-center gap-3 bg-gradient-to-r from-gold to-[#c9a15a] text-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold uppercase tracking-widest text-xs sm:text-sm hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(201,161,90,0.3)]"
                       >
                         Inquire Now
                         <svg
@@ -232,19 +232,23 @@ export default function ImageGallery({
                   </div>
 
                   {/* Right: The Image Container */}
-                  <div className="w-full md:w-7/12 min-h-[50vh] md:min-h-[70vh] relative bg-black/40 backdrop-blur-md border-l border-white/5 p-8 flex items-center justify-center">
+                  <div className="w-full md:w-7/12 relative bg-black/40 backdrop-blur-md border-t md:border-t-0 md:border-l border-white/5 p-4 sm:p-6 md:p-8 flex items-center justify-center">
                     <button
                       type="button"
                       onClick={() => open(i)}
                       aria-label="View colour chart full size"
-                      className="w-full h-full relative rounded-[2rem] overflow-hidden bg-black/20 shadow-inner cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-gold group-hover:shadow-[inset_0_0_50px_rgba(201,161,90,0.1)] transition-shadow duration-500"
+                      className="w-full relative aspect-[4/3] md:aspect-auto md:h-full md:min-h-[60vh] rounded-2xl md:rounded-[2rem] overflow-hidden bg-black/20 shadow-inner cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-gold group-hover:shadow-[inset_0_0_50px_rgba(201,161,90,0.1)] transition-shadow duration-500"
                     >
                       <Image
                         src={item.src}
                         alt="Customization Chart"
                         fill
+                        sizes="(max-width: 768px) 100vw, 58vw"
                         className="object-contain object-center drop-shadow-2xl transition-transform duration-[3s] group-hover:scale-105"
                       />
+                      <span className="md:hidden absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.2em] text-white/60 bg-black/50 rounded-full px-3 py-1">
+                        Tap to zoom
+                      </span>
                     </button>
                   </div>
                 </motion.div>
@@ -326,7 +330,7 @@ export default function ImageGallery({
                 role="dialog"
                 aria-modal="true"
                 aria-label={activeImage.category}
-                className="fixed inset-0 z-[2147483000] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
+                className="fixed inset-0 z-[2147483000] bg-black/95 backdrop-blur-sm flex items-center justify-center px-3 pt-16 pb-16 md:p-10"
               >
                 {/* Close */}
                 <button
@@ -347,7 +351,7 @@ export default function ImageGallery({
                         step(-1);
                       }}
                       aria-label="Previous image"
-                      className="absolute left-2 md:left-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
+                      className="absolute left-2 md:left-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white hidden sm:flex items-center justify-center transition-colors"
                     >
                       <ChevronLeft className="w-6 h-6" />
                     </button>
@@ -358,7 +362,7 @@ export default function ImageGallery({
                         step(1);
                       }}
                       aria-label="Next image"
-                      className="absolute right-2 md:right-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-colors"
+                      className="absolute right-2 md:right-6 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white hidden sm:flex items-center justify-center transition-colors"
                     >
                       <ChevronRight className="w-6 h-6" />
                     </button>
@@ -372,15 +376,23 @@ export default function ImageGallery({
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative w-full h-full max-w-6xl"
+                  drag={displayImages.length > 1 ? "x" : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x < -60) step(1);
+                    else if (info.offset.x > 60) step(-1);
+                  }}
+                  className="relative w-full h-full max-w-6xl touch-pan-y"
                 >
                   <Image
                     src={activeImage.src}
                     alt={activeImage.category}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, 90vw"
                     priority
-                    className="object-contain"
+                    draggable={false}
+                    className="object-contain select-none"
                   />
                 </motion.div>
 
