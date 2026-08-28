@@ -33,48 +33,68 @@ const sunPleatedPantColors = [
   "Pink & Forest Green", "Pink & Gold", "Pink & Red"
 ];
 
-export const sunPleatedPantImages: GalleryItem[] = Array.from({ length: 7 }, (_, i) => ({
-  id: i + 1,
-  src: `/assets/dress${i + 1}.jpeg`,
-  category: "Sun Pleated Pant",
-  size: "tall" as Size,
-  colors: sunPleatedPantColors[i],
-}));
+export const sunPleatedPantImages: GalleryItem[] = Array.from({ length: 33 }, (_, i) => {
+  const isModel = [17, 25, 26, 28, 29, 30, 31].includes(i + 1);
+  const folder = isModel ? "models/" : "";
+  return {
+    id: `sun-pleated-silk-${i + 1}`,
+    src: `/assets/sun_pleated_pant_model_with_silk_zari_border/${folder}dress${i + 1}.jpeg`,
+    category: "Sun Pleated Pant Model",
+    size: "tall" as Size,
+    colors: sunPleatedPantColors[i] || "Assorted",
+  };
+});
 
-export const threadBorderImages: GalleryItem[] = buildGallery(
-  "sunpleated_pant_model_with_thread_border",
-  "sp",
-  16,
-  "Thread Border",
-  "tall",
-  [
-    "Blue & Royal Blue", "Cyan & Royal Blue", "Orange & Blue", "Cyan & Navy Blue",
-    "Cyan & Blue", "Blue & Maroon", "Solid Red", "Red & Blue",
-    "Yellow & Red", "Orange & Purple", "Blue & Pink", "Pink & Blue",
-    "Pink & Blue", "Pink & Teal", "Pink & Teal", "Orange & Blue"
-  ]
-);
+export const threadBorderImages: GalleryItem[] = [
+  ...buildGallery(
+    "sunpleated_pant_model_with_thread_border",
+    "sp",
+    16,
+    "Thread Border",
+    "tall",
+    [
+      "Blue & Royal Blue", "Cyan & Royal Blue", "Orange & Blue", "Cyan & Navy Blue",
+      "Cyan & Blue", "Blue & Maroon", "Solid Red", "Red & Blue",
+      "Yellow & Red", "Orange & Purple", "Blue & Pink", "Pink & Blue",
+      "Pink & Blue", "Pink & Teal", "Pink & Teal", "Orange & Blue"
+    ]
+  ),
+  {
+    id: 17,
+    src: "/assets/sunpleated_pant_model_with_thread_border/combination.jpeg",
+    category: "Thread Border",
+    size: "tall"
+  }
+];
 
 export const practiceSareesImages: GalleryItem[] = buildGallery(
   "practice sarees",
   "ps",
-  13,
+  16,
   "Practice Sarees",
   "tall"
 );
 
-export const skirtModelImages: GalleryItem[] = buildGallery(
-  "skirtmodel",
-  "sm",
-  10,
-  "Skirt Model",
-  "tall"
-);
+export const skirtModelImages: GalleryItem[] = [
+  ...buildGallery(
+    "skirtmodel",
+    "sm",
+    21,
+    "Skirt Model",
+    "tall"
+  ),
+  {
+    id: 22,
+    src: "/assets/skirtmodel/combination.jpeg",
+    category: "Skirt Model",
+    size: "tall"
+  }
+];
 
 export const sareeConvertCostumesImages: GalleryItem[] = buildGallery(
   "sareeconvertcostumes",
   "sc",
-  20,
+  23,
   "Saree Convert Costumes",
   "tall"
 );
@@ -82,7 +102,7 @@ export const sareeConvertCostumesImages: GalleryItem[] = buildGallery(
 export const bharathanatyamCustomerPhotosImages: GalleryItem[] = buildGallery(
   "bharathanatyam_customer_photos",
   "bcp",
-  42,
+  48,
   "Customer Photos",
   "tall"
 );
@@ -103,6 +123,21 @@ export const bharathanatyamCustomerReviewsImages: GalleryItem[] = buildGallery(
   "tall"
 );
 
+export const practiceChudiImages: GalleryItem[] = buildGallery(
+  "practice_chudi_set_kids_and_adults",
+  "pc",
+  8,
+  "Practice Chudi Set Kids and Adult",
+  "tall"
+);
+
+export const kathakaliDanceCostumesImages: GalleryItem[] = [
+  { id: 1, src: "/assets/kathakalidancecostumes/kdc1.jpeg", category: "Kathakali Dance Costumes", size: "tall" },
+  { id: 2, src: "/assets/kathakalidancecostumes/kdc3.jpeg", category: "Kathakali Dance Costumes", size: "tall" },
+  { id: 3, src: "/assets/kathakalidancecostumes/kdc4.jpeg", category: "Kathakali Dance Costumes", size: "tall" },
+  { id: 4, src: "/assets/kathakalidancecostumes/kdc2.jpeg", category: "Kathakali Dance Costumes", size: "tall" }
+];
+
 export const bharathanatyamCategories = [
   {
     id: "sun-pleated-pant",
@@ -118,6 +153,13 @@ export const bharathanatyamCategories = [
     cover: threadBorderImages[0]?.src,
     images: threadBorderImages
   },
+  {
+    id: "kathakali-dance-costumes",
+    title: "Kathakali Dance Costumes",
+    subtitle: "Traditional Attire",
+    cover: kathakaliDanceCostumesImages[0]?.src,
+    images: kathakaliDanceCostumesImages
+  },
  
   {
     id: "skirt-model",
@@ -125,6 +167,13 @@ export const bharathanatyamCategories = [
     subtitle: "Classic Elegance",
     cover: skirtModelImages[0]?.src,
     images: skirtModelImages
+  },
+  {
+    id: "practice-chudi-set-kids-and-adult",
+    title: "Practice Chudi Set Kids and Adult",
+    subtitle: "Comfortable Practice Wear",
+    cover: practiceChudiImages[0]?.src,
+    images: practiceChudiImages
   },
 
   {

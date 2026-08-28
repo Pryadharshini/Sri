@@ -656,46 +656,241 @@
       "id": "sun-pleated-pant",
       "title": "Sun Pleated Pant Model with Silk Zari Border",
       "subtitle": "Silk Zari Border",
-      "cover": "/assets/dress1.jpeg",
+      "cover": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress1.jpeg",
       "images": [
         {
           "id": 1,
-          "src": "/assets/dress1.jpeg",
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress1.jpeg",
           "category": "Sun Pleated Pant",
           "size": "tall",
           "colors": "Pink & Maroon"
         },
         {
           "id": 2,
-          "src": "/assets/dress2.jpeg",
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress2.jpeg",
           "category": "Sun Pleated Pant",
           "size": "tall",
           "colors": "Pink & Green"
         },
         {
           "id": 3,
-          "src": "/assets/dress3.jpeg",
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress3.jpeg",
           "category": "Sun Pleated Pant",
           "size": "tall",
           "colors": "Maroon & Pink"
         },
         {
           "id": 4,
-          "src": "/assets/dress4.jpeg",
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress4.jpeg",
           "category": "Sun Pleated Pant",
           "size": "tall",
           "colors": "Pink & Olive Green"
         },
         {
           "id": 5,
-          "src": "/assets/dress5.jpeg",
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress5.jpeg",
           "category": "Sun Pleated Pant",
           "size": "tall",
           "colors": "Pink & Forest Green"
+        },
+        {
+          "id": 6,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress6.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Pink & Gold"
+        },
+        {
+          "id": 7,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress7.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Pink & Red"
+        },
+        {
+          "id": 8,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress8.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 9,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress9.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 10,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress10.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 11,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress11.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 12,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress12.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 13,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress13.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 14,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress14.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 15,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress15.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 16,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress16.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 17,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/models/dress17.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 18,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress18.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 19,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress19.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 20,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress20.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 21,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress21.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 22,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress22.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 23,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress23.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 24,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress24.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 25,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/models/dress25.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 26,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/models/dress26.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 27,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress27.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 28,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/models/dress28.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 29,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/models/dress29.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 30,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/models/dress30.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 31,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/models/dress31.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 32,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress32.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
+        },
+        {
+          "id": 33,
+          "src": "/assets/sun_pleated_pant_model_with_silk_zari_border/dress33.jpeg",
+          "category": "Sun Pleated Pant",
+          "size": "tall",
+          "colors": "Assorted"
         }
       ]
     },
-
     {
       "id": "sun-pleated-pant-thread-border",
       "title": "Sun Pleated Pant Model with Thread Border",
@@ -813,10 +1008,47 @@
           "category": "Thread Border",
           "size": "tall",
           "colors": "Orange & Blue"
+        },
+        {
+          "id": 17,
+          "src": "/assets/sunpleated_pant_model_with_thread_border/combination.jpeg",
+          "category": "Thread Border",
+          "size": "tall"
         }
       ]
     },
-  
+    {
+      "id": "kathakali-dance-costumes",
+      "title": "Kathakali Dance Costumes",
+      "subtitle": "Traditional Attire",
+      "cover": "/assets/kathakalidancecostumes/kdc1.jpeg",
+      "images": [
+        {
+          "id": 1,
+          "src": "/assets/kathakalidancecostumes/kdc1.jpeg",
+          "category": "Kathakali Dance Costumes",
+          "size": "tall"
+        },
+        {
+          "id": 2,
+          "src": "/assets/kathakalidancecostumes/kdc3.jpeg",
+          "category": "Kathakali Dance Costumes",
+          "size": "tall"
+        },
+        {
+          "id": 3,
+          "src": "/assets/kathakalidancecostumes/kdc4.jpeg",
+          "category": "Kathakali Dance Costumes",
+          "size": "tall"
+        },
+        {
+          "id": 4,
+          "src": "/assets/kathakalidancecostumes/kdc2.jpeg",
+          "category": "Kathakali Dance Costumes",
+          "size": "tall"
+        }
+      ]
+    },
     {
       "id": "skirt-model",
       "title": "Skirt Model",
@@ -912,6 +1144,104 @@
           "src": "/assets/skirtmodel/sm15.jpeg",
           "category": "Skirt Model",
           "size": "tall"
+        },
+        {
+          "id": 16,
+          "src": "/assets/skirtmodel/sm16.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 17,
+          "src": "/assets/skirtmodel/sm17.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 18,
+          "src": "/assets/skirtmodel/sm18.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 19,
+          "src": "/assets/skirtmodel/sm19.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 20,
+          "src": "/assets/skirtmodel/sm20.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 21,
+          "src": "/assets/skirtmodel/sm21.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        },
+        {
+          "id": 22,
+          "src": "/assets/skirtmodel/combination.jpeg",
+          "category": "Skirt Model",
+          "size": "tall"
+        }
+      ]
+    },
+    {
+      "id": "practice-chudi-set-kids-and-adult",
+      "title": "Practice Chudi Set Kids and Adult",
+      "subtitle": "Comfortable Practice Wear",
+      "cover": "/assets/practice_chudi_set_kids_and_adults/pc1.jpeg",
+      "images": [
+        {
+          "id": 1,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc1.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
+        },
+        {
+          "id": 2,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc2.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
+        },
+        {
+          "id": 3,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc3.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
+        },
+        {
+          "id": 4,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc4.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
+        },
+        {
+          "id": 5,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc5.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
+        },
+        {
+          "id": 6,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc6.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
+        },
+        {
+          "id": 7,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc7.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
+        },
+        {
+          "id": 8,
+          "src": "/assets/practice_chudi_set_kids_and_adults/pc8.jpeg",
+          "category": "Practice Chudi Set Kids and Adult",
+          "size": "tall"
         }
       ]
     },
@@ -996,6 +1326,24 @@
         {
           "id": 13,
           "src": "/assets/practice sarees/ps13.jpeg",
+          "category": "Practice Sarees",
+          "size": "tall"
+        },
+        {
+          "id": 14,
+          "src": "/assets/practice sarees/ps14.jpeg",
+          "category": "Practice Sarees",
+          "size": "tall"
+        },
+        {
+          "id": 15,
+          "src": "/assets/practice sarees/ps15.jpeg",
+          "category": "Practice Sarees",
+          "size": "tall"
+        },
+        {
+          "id": 16,
+          "src": "/assets/practice sarees/ps16.jpeg",
           "category": "Practice Sarees",
           "size": "tall"
         }
@@ -1124,6 +1472,24 @@
         {
           "id": 20,
           "src": "/assets/sareeconvertcostumes/sc20.jpeg",
+          "category": "Saree Convert Costumes",
+          "size": "tall"
+        },
+        {
+          "id": 21,
+          "src": "/assets/sareeconvertcostumes/sc21.jpeg",
+          "category": "Saree Convert Costumes",
+          "size": "tall"
+        },
+        {
+          "id": 22,
+          "src": "/assets/sareeconvertcostumes/sc22.jpeg",
+          "category": "Saree Convert Costumes",
+          "size": "tall"
+        },
+        {
+          "id": 23,
+          "src": "/assets/sareeconvertcostumes/sc23.jpeg",
           "category": "Saree Convert Costumes",
           "size": "tall"
         }
@@ -1452,6 +1818,42 @@
         {
           "id": 42,
           "src": "/assets/bharathanatyam_customer_photos/bcp42.jpeg",
+          "category": "Customer Photos",
+          "size": "tall"
+        },
+        {
+          "id": 43,
+          "src": "/assets/bharathanatyam_customer_photos/bcp43.jpeg",
+          "category": "Customer Photos",
+          "size": "tall"
+        },
+        {
+          "id": 44,
+          "src": "/assets/bharathanatyam_customer_photos/bcp44.jpeg",
+          "category": "Customer Photos",
+          "size": "tall"
+        },
+        {
+          "id": 45,
+          "src": "/assets/bharathanatyam_customer_photos/bcp45.jpeg",
+          "category": "Customer Photos",
+          "size": "tall"
+        },
+        {
+          "id": 46,
+          "src": "/assets/bharathanatyam_customer_photos/bcp46.jpeg",
+          "category": "Customer Photos",
+          "size": "tall"
+        },
+        {
+          "id": 47,
+          "src": "/assets/bharathanatyam_customer_photos/bcp47.jpeg",
+          "category": "Customer Photos",
+          "size": "tall"
+        },
+        {
+          "id": 48,
+          "src": "/assets/bharathanatyam_customer_photos/bcp48.jpeg",
           "category": "Customer Photos",
           "size": "tall"
         }

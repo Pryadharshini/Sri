@@ -27,7 +27,7 @@ export default function BharathanatyamDescription() {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    fetch("/api/content")
+    fetch("/api/content", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         const filtered = (data.bharathanatyam || []).filter(
